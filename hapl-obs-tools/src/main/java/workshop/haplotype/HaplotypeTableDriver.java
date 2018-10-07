@@ -21,7 +21,6 @@
 */
 package workshop.haplotype;
 
-import java.io.File;
 import java.util.concurrent.Callable;
 
 import org.dishevelled.commandline.ArgumentList;
@@ -34,6 +33,7 @@ import org.dishevelled.commandline.argument.StringArgument;
 
 import workshop.haplotype.frequency.write.GenerateFullHaplotypeFrequencyTable;
 import workshop.haplotype.frequency.write.GenerateSixLociHaplotypeTable;
+import workshop.haplotype.organize.file.AggregateInputs;
 import workshop.haplotype.write.GenerateFamilyHaplotype;
 
 /**
@@ -62,6 +62,9 @@ public class HaplotypeTableDriver implements Callable<Integer> {
     
     @Override
     public Integer call() throws Exception { 
+    	AggregateInputs aggregateInputs = new AggregateInputs();
+    	aggregateInputs.organizeFiles(baseDir);
+    	
     	if (family.wasFound()) {
     		new GenerateFamilyHaplotype(baseDir);
     	}
