@@ -148,10 +148,10 @@ public class HaplotypeTableDriver implements Callable<Integer> {
 					" - Generate summary table that contains haplotype frequencies from all ethnicity/country in a single spreadsheet\n" + 
 					" - Generates haplotype frequency table that can be used as reference table for HLAHapV\n\n");
             sb.append("tdt: Generates transmitted & non-transmitted tables, and input files for TDT R packages\n" +
-					" - use this when performing TDT and multi-allelic TDT from Trio families" + 
-            		" - Generates transmitted & non-transmitted haplotype table" +
-					" - Generates input files for Standard TDT R package" + 
-            		" - Generates input files for multi-allelic TDT R package");
+					" - use this when performing TDT and multi-allelic TDT from Trio families\n" + 
+            		" - Generates transmitted & non-transmitted haplotype table\n" +
+					" - Generates input files for Standard TDT R package\n" + 
+            		" - Generates input files for multi-allelic TDT R package\n");
             return sb.toString();
         }
     }
