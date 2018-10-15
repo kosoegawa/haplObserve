@@ -1,5 +1,5 @@
 /**
- * 
+ * haplotype target
  */
 package workshop.haplotype.frequency.ranking;
 
@@ -10,6 +10,7 @@ import workshop.haplotype.gene.HLAgene;
 
 /**
  * @author kazu
+ * @version October 12 2018
  *
  */
 public class HapTarget {
@@ -74,11 +75,20 @@ public class HapTarget {
 		hapTargetList.add("DRB1,DQB1");
 		nameList.add("DRB1DQB1");
 		hapSixTargetList.add("DRB1,DQB1");
-		sixNameList.add("DRB1DQB1");
-		
+		sixNameList.add("DRB1DQB1");		
 		
 		hapTargetList.add("DPA1,DPB1");
 		nameList.add("DP");
+		
+		hapTargetList.add("HLA-B,DRB1");
+		nameList.add("BDRB1");
+		hapSixTargetList.add("HLA-B,DRB1");
+		sixNameList.add("BDRB1");
+		
+		hapTargetList.add("DRB1,DQB1,DPB1");
+		nameList.add("DRB1DQB1DPB1");
+		hapSixTargetList.add("DRB1,DQB1,DPB1");
+		sixNameList.add("DRB1DQB1DPB1");
 		
 		HLAgene hlaGene = new HLAgene();
 		hapTargetList.addAll(hlaGene.getGeneList());

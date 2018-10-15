@@ -43,10 +43,12 @@ public class SampleHap extends SampleHapAbstract {
 			String replacedLine = line.replaceAll("NoMatch", "NT");		// this was VERY important line
 			String [] elements = replacedLine.split(",");
 			String family = elements[0];	// first element: family
-			familyList.addNonRedundantList(family);
+			familyList.addNonRedundantList(family);		// populate familyList
 			String sample = elements[1];	// second element: sample
+					
+			String regex = "HLA-DRB[345]\\*00:00~";	// remove for two field allele
 			// swapped from the original design
-			String [] hap = elements[3].split("\\+");			// Two haplotypes
+			String [] hap = elements[3].replaceAll(regex, "").split("\\+");			// Two haplotypes
 			String relation = elements[2];	// third element: relationship
 			sampleList.add(sample);
 			if ( relation.equals("father") ) {	// fathers
@@ -58,11 +60,13 @@ public class SampleHap extends SampleHapAbstract {
 			else {	// children
 				childList.add(sample);
 			}			
-			sampleFam.put(sample, family);
+			sampleFam.put(sample, family);	// populate sample family
 			sampleRelation.put(sample, relation);
 			
 			List<String> hapList = new ArrayList<String>();
 			for (String haplo : hap) {	// go through each haplotype
+				
+				
 				String [] alleles = haplo.split("~");	// separate a haplotype into alleles
 				String targetHap = "";	// Reconstitutes target haplotype
 				for (String allele : alleles) {		// go through allele 

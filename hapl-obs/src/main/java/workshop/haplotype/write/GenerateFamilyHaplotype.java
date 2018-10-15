@@ -18,7 +18,7 @@ import workshop.haplotype.collective.FamSamRelationCountry;
  */
 public class GenerateFamilyHaplotype {
 	protected String collective;
-	protected String haplotype;
+	protected String haplotype;	// haplotype dir
 	protected String today;
 	protected FamSamRelationCountry fsrc;
 

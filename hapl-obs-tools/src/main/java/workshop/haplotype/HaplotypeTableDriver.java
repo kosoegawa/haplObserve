@@ -32,6 +32,7 @@ import org.dishevelled.commandline.Usage;
 import org.dishevelled.commandline.argument.StringArgument;
 
 import workshop.haplotype.frequency.write.GenerateFullHaplotypeFrequencyTable;
+import workshop.haplotype.frequency.write.GenerateMatrixFileForMTDT2;
 import workshop.haplotype.frequency.write.GenerateSixLociHaplotypeTable;
 import workshop.haplotype.organize.file.AggregateInputs;
 import workshop.haplotype.write.GenerateFamilyHaplotype;
@@ -46,6 +47,7 @@ public class HaplotypeTableDriver implements Callable<Integer> {
     private static Switch family;
     private static Switch full;
     private static Switch six;
+    private static Switch tdt;		// added by Kazu
 
     private static final String USAGE = "haplotype-table-driver [args]";
 
@@ -74,6 +76,9 @@ public class HaplotypeTableDriver implements Callable<Integer> {
     	else if (six.wasFound()) {
     		new GenerateSixLociHaplotypeTable(baseDir);
     	}
+    	else if (tdt.wasFound()) {	// added by Kazu
+    		new GenerateMatrixFileForMTDT2(baseDir);
+    	}
     	return 0;
     }
 
@@ -89,8 +94,10 @@ public class HaplotypeTableDriver implements Callable<Integer> {
         family = new Switch("fam", "family", "Generates haplotypes, but not frequencies, from multiple families");
         full = new Switch("full", "full", "Generates haplotypes and 11 locus frequencies, from multiple families");
         six = new Switch("six", "six", "Generates haplotypes and 6 locus frequencies, from multiple families");
+        // Kazu added
+        tdt = new Switch("tdt", "tdt", "Generates transmitted & non-transmitted tables, and input files for TDTand multi-allelic TDT R packages");
 
-        ArgumentList arguments  = new ArgumentList(about, help, baseDir, family, full, six);
+        ArgumentList arguments  = new ArgumentList(about, help, baseDir, family, full, six, tdt);
         CommandLine commandLine = new CommandLine(args);
 
         HaplotypeTableDriver haplotypeTableDriver = null;
@@ -140,6 +147,11 @@ public class HaplotypeTableDriver implements Callable<Integer> {
 					" - Calculates haplotype frequencies for 6 HLA loci (HLA-A, HLA-C, HLA-B, HLA-DRB1, HLA-DQB1, HLA-DPB1)\n" + 
 					" - Generate summary table that contains haplotype frequencies from all ethnicity/country in a single spreadsheet\n" + 
 					" - Generates haplotype frequency table that can be used as reference table for HLAHapV\n\n");
+            sb.append("tdt: Generates transmitted & non-transmitted tables, and input files for TDT R packages\n" +
+					" - use this when performing TDT and multi-allelic TDT from Trio families" + 
+            		" - Generates transmitted & non-transmitted haplotype table" +
+					" - Generates input files for Standard TDT R package" + 
+            		" - Generates input files for multi-allelic TDT R package");
             return sb.toString();
         }
     }
