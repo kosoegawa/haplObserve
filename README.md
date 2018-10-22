@@ -66,13 +66,17 @@ After un-zipping the software, test the following commands for instructions on h
  - Generate summary table that contains haplotype frequencies from all ethnicity/country in a single spreadsheet
  - Generates haplotype frequency table that can be used as reference table for HLAHapV [1]
   
-  # haplotype-table-driver -b &lt;baseDirectory> -six
+ # haplotype-table-driver -b &lt;baseDirectory> -six
  - Use this when genotypes for HLA-DRB3/4/5, HLA-DQA1 and HLA-DPA1 are not available. 
  - Generates haplotypes from multiple families (same as option1&2)
  - Separate haplotypes by ethnicity/country (same as option2)
  - Calculates haplotype frequencies for 6 HLA loci (HLA-A, HLA-C, HLA-B, HLA-DRB1, HLA-DQB1, HLA-DPB1)
  - Generate summary table that contains haplotype frequencies from all ethnicity/country in a single spreadsheet
  - Generates haplotype frequency table that can be used as reference table for HLAHapV
+ 
+ # haplotype-table-driver -b &lt;baseDirectory> -tdt
+ - Use this when performing TDT and multi-allelic TDT from Trio families 
+ - Generates transmitted & non-transmitted tables, and input files for TDT R packages
  
 # Test / Example Files:
  - Test / example files (which the JUnit tests make use of) can be found at hapl-obs/src/test/resources (csv files and the collective directory)

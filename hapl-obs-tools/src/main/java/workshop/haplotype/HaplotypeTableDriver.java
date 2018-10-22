@@ -141,14 +141,14 @@ public class HaplotypeTableDriver implements Callable<Integer> {
             		" - Generate summary table that contains haplotype frequencies from all ethnicity/country in a single spreadsheet\n" + 
             		" - Generates haplotype frequency table that can be used as reference table for HLAHapV.\n");
             sb.append("six:  Generates haplotypes and 6 locus frequencies, from multiple families\n" +
-					" - use this when genotypes for HLA-DRB3/4/5, HLA-DQA1 and HLA-DPA1 are not available. \n" + 
+					" - Use this when genotypes for HLA-DRB3/4/5, HLA-DQA1 and HLA-DPA1 are not available. \n" + 
 					" - Generates haplotypes from multiple families\n" + 
 					" - Separate haplotypes by ethnicity/country\n" + 
 					" - Calculates haplotype frequencies for 6 HLA loci (HLA-A, HLA-C, HLA-B, HLA-DRB1, HLA-DQB1, HLA-DPB1)\n" + 
 					" - Generate summary table that contains haplotype frequencies from all ethnicity/country in a single spreadsheet\n" + 
 					" - Generates haplotype frequency table that can be used as reference table for HLAHapV\n\n");
             sb.append("tdt: Generates transmitted & non-transmitted tables, and input files for TDT R packages\n" +
-					" - use this when performing TDT and multi-allelic TDT from Trio families\n" + 
+					" - Use this when performing TDT and multi-allelic TDT from Trio families\n" + 
             		" - Generates transmitted & non-transmitted haplotype table\n" +
 					" - Generates input files for Standard TDT R package\n" + 
             		" - Generates input files for multi-allelic TDT R package\n");
