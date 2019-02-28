@@ -14,7 +14,7 @@ import workshop.haplotype.gene.OrderedHLAgene;
 
 /**
  * @author kazu
- * @version June 13 2018
+ * @version February 28 2019
  *
  */
 public class CreateHaplotypeGLstring {
@@ -108,6 +108,7 @@ public class CreateHaplotypeGLstring {
 		return list;
 	}
 	
+	// this function caused ambiguous two field allele
 	public String getTwoFieldAllele(String allele) {
 		ExtractTwoField extracted = new ExtractTwoField(allele);		// extract two field
 		int count = 0;
