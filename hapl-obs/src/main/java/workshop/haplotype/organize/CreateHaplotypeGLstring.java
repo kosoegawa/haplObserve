@@ -53,34 +53,41 @@ public class CreateHaplotypeGLstring {
 								ConvertToSingleAllele ctsa = new ConvertToSingleAllele(type);
 								if (ctsa.getSingleAllele().contains("HLA-DRB3")) {
 									singleAlleleHaplotype += ctsa.getSingleAllele() + "~HLA-DRB4*00:00~HLA-DRB5*00:00~";
-									twoFieldHap += getTwoFieldAllele(type) + "~HLA-DRB4*00:00~HLA-DRB5*00:00~";									
+//									twoFieldHap += getTwoFieldAllele(type) + "~HLA-DRB4*00:00~HLA-DRB5*00:00~";		
+									twoFieldHap += getTwoFieldAllele(ctsa.getSingleAllele()) + "~HLA-DRB4*00:00~HLA-DRB5*00:00~";	
 									drb345Count++;
 								}
 								else if (ctsa.getSingleAllele().contains("HLA-DRB4")) {
 									singleAlleleHaplotype += "HLA-DRB3*00:00~" + ctsa.getSingleAllele() + "~HLA-DRB5*00:00~";
-									twoFieldHap += "HLA-DRB3*00:00~" + getTwoFieldAllele(type) + "~HLA-DRB5*00:00~";
+//									twoFieldHap += "HLA-DRB3*00:00~" + getTwoFieldAllele(type) + "~HLA-DRB5*00:00~";
+									twoFieldHap += "HLA-DRB3*00:00~" + getTwoFieldAllele(ctsa.getSingleAllele()) + "~HLA-DRB5*00:00~";
 									drb345Count++;
 								}
 								else if (ctsa.getSingleAllele().contains("HLA-DRB5")) {
 									singleAlleleHaplotype += "HLA-DRB3*00:00~HLA-DRB4*00:00~" + ctsa.getSingleAllele() + "~";
-									twoFieldHap += "HLA-DRB3*00:00~HLA-DRB4*00:00~" + getTwoFieldAllele(type) +  "~";
+//									twoFieldHap += "HLA-DRB3*00:00~HLA-DRB4*00:00~" + getTwoFieldAllele(type) +  "~";
+									twoFieldHap += "HLA-DRB3*00:00~HLA-DRB4*00:00~" + getTwoFieldAllele(ctsa.getSingleAllele()) +  "~";
 									drb345Count++;
 								}
 								else if (ctsa.getSingleAllele().contains("HLA-DRB1")) {
 									if (drb345Count == 0) {	// absence of DRB345
 										singleAlleleHaplotype += "HLA-DRB3*00:00~HLA-DRB4*00:00~HLA-DRB5*00:00~" 														
 												+ ctsa.getSingleAllele() + "~";
+//										twoFieldHap += "HLA-DRB3*00:00~HLA-DRB4*00:00~HLA-DRB5*00:00~" 
+//												+ getTwoFieldAllele(type) + "~";
 										twoFieldHap += "HLA-DRB3*00:00~HLA-DRB4*00:00~HLA-DRB5*00:00~" 
-												+ getTwoFieldAllele(type) + "~";
+												+ getTwoFieldAllele(ctsa.getSingleAllele()) + "~";
 									}
 									else {	// presence of DRB345
 										singleAlleleHaplotype += ctsa.getSingleAllele() + "~";
-										twoFieldHap += getTwoFieldAllele(type) + "~";
+	//									twoFieldHap += getTwoFieldAllele(type) + "~";
+										twoFieldHap += getTwoFieldAllele(ctsa.getSingleAllele()) + "~";
 									}
 								}
 								else {	// not DRB genes
 										singleAlleleHaplotype += ctsa.getSingleAllele() + "~";		
-										twoFieldHap += getTwoFieldAllele(type) + "~";
+//										twoFieldHap += getTwoFieldAllele(type) + "~";
+										twoFieldHap += getTwoFieldAllele(ctsa.getSingleAllele()) + "~";
 								}
 							}
 						}								
