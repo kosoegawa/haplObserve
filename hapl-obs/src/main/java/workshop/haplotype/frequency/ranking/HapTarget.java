@@ -10,7 +10,7 @@ import workshop.haplotype.gene.HLAgene;
 
 /**
  * @author kazu
- * @version October 12 2018
+ * @version April 22 2019
  *
  */
 public class HapTarget {
@@ -84,6 +84,12 @@ public class HapTarget {
 		nameList.add("BDRB1");
 		hapSixTargetList.add("HLA-B,DRB1");
 		sixNameList.add("BDRB1");
+		
+		// added April 22 2019
+		hapTargetList.add("HLA-B,DQB1");
+		nameList.add("BDQB1");
+		hapSixTargetList.add("HLA-B,DQB1");
+		sixNameList.add("BDQB1");
 		
 		hapTargetList.add("DRB1,DQB1,DPB1");
 		nameList.add("DRB1DQB1DPB1");
