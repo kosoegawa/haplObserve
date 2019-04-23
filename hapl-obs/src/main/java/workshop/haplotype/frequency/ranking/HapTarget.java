@@ -91,6 +91,16 @@ public class HapTarget {
 		hapSixTargetList.add("HLA-B,DQB1");
 		sixNameList.add("BDQB1");
 		
+		hapTargetList.add("HLA-C,DRB1");
+		nameList.add("CDRB1");
+		hapSixTargetList.add("HLA-C,DRB1");
+		sixNameList.add("CDRB1");
+		
+		hapTargetList.add("HLA-C,DQB1");
+		nameList.add("CDQB1");
+		hapSixTargetList.add("HLA-C,DQB1");
+		sixNameList.add("CDQB1");
+		
 		hapTargetList.add("DRB1,DQB1,DPB1");
 		nameList.add("DRB1DQB1DPB1");
 		hapSixTargetList.add("DRB1,DQB1,DPB1");
