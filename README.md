@@ -18,6 +18,7 @@ When multiple families are present in the dataset, haplObserve includes an optio
 
  - “gl_strings_XXX.csv” files should be stored under “&lt;baseDir>/collective/gl_strings_XXX.csv. The software looks for “gl_strings” to identify files to be used. Multiple families can be included in a single file. If multiple files exist, the software combines them.
  - The “gl_strings” file contains the following information: Labcode, Family ID, Sample ID, Relation, Gl String, Ethnicity/Country. These categories should be included in the first line as a header.
+ - It is important to note that file name should not contain "combined"
  
  
  
