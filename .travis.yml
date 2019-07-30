@@ -10,3 +10,28 @@ jobs:
       jdk: openjdk8
 
     - jdk: openjdk11
+
+    - stage: deploy
+      if: tag IS present
+      jdk: openjdk11
+      install: skip
+      script: skip
+      if: tag IS present
+      before_deploy:
+        - mvn clean
+        - sed -i "s|<version>0.0.1-SNAPSHOT</version>|<version>${TRAVIS_TAG}</version>|" pom.xml
+        - sed -i "s|<version>0.0.1-SNAPSHOT</version>|<version>${TRAVIS_TAG}</version>|" hapl-obs/pom.xml
+        - sed -i "s|<version>0.0.1-SNAPSHOT</version>|<version>${TRAVIS_TAG}</version>|" hapl-obs-tools/pom.xml
+        - mvn package -Dmaven.test.skip=true
+
+      deploy:
+        provider: releases
+        api_key: $GITHUB_OAUTH_TOKEN
+        skip_cleanup: true
+        file_glob: true
+        file:
+          - "hapl-obs/target/*.jar"
+          - "hapl-obs-tools/target/hapl-obs-tools*"
+        on:
+          tags: true
+          all_branches: true
