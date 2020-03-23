@@ -63,16 +63,18 @@ public class GenerateGlobalHapTSVTable {
 				if (globalshc.getHapCountRank().containsKey(hap)) {
 					out.write(String.format("%.6f", globalshc.getFrequency().get(hap)) + "\t");	// frequency
 					out.write(globalshc.getHapCountRank().get(hap).get(0) + "\t");	// hap count
-					out.write(globalshc.getHapCountRank().get(hap).get(2) + "\t");	// family count
-					out.write(globalshc.getHapCountRank().get(hap).get(3));	// sample count
+					
+					for (int index = 2; index < globalshc.getHapCountRank().get(hap).size(); index++) {	// removed ranking
+						out.write(globalshc.getHapCountRank().get(hap).get(index) + "\t");	// 
+					}
 				}
 				else {	// haplotype does not exist
-					out.write("0\t0\t0\t0");	// add 0 except for ranking			
+					out.write("0\t0\t0\t0\t");	// add 0 except for ranking			
 				}
 				out.write("\n");				
 			}					
 			
-			for (String group : cdl.getInputFileNameList()) {	// go though input file name
+			for (int count = 0; count < cdl.getDirList().size(); count++) {
 				for (String hap : obr.getRankedHapList()) {		// use ordered hap list
 					String [] alleles = hap.split("~");
 					for (String allele : alleles) {	// need to handle DRB345					
@@ -92,15 +94,16 @@ public class GenerateGlobalHapTSVTable {
 						else {	// no DRB345 in the target
 							out.write(allele + "\t");
 						}				
-					}					
-					out.write(group + "\t");
+					}	
+					out.write(cdl.getDirList().get(count) + "\t");
 					
-					SampleHapCount groupshc = new SampleHapCount( group, target );
+					SampleHapCount groupshc = new SampleHapCount( cdl.getInputFileNameList().get(count), target );
 					if (groupshc.getHapCountRank().containsKey(hap)) {
 						out.write(String.format("%.6f", groupshc.getFrequency().get(hap)) + "\t");	// frequency
 						out.write(groupshc.getHapCountRank().get(hap).get(0) + "\t");	// hap count
-						out.write( groupshc.getHapCountRank().get(hap).get(2) + "\t");	// family count
-						out.write( groupshc.getHapCountRank().get(hap).get(3) + "\t");	// sample
+						for (int index = 2; index < globalshc.getHapCountRank().get(hap).size(); index++) {	// removed ranking
+							out.write(globalshc.getHapCountRank().get(hap).get(index) + "\t");	// 
+						}
 					}
 					else {
 						for (int index = 0; index < 5; index++) {
@@ -112,7 +115,7 @@ public class GenerateGlobalHapTSVTable {
 							}						
 						}	
 					}
-					out.write(group + "\t");		
+					out.write("\n");
 				}
 			}
 
