@@ -105,15 +105,8 @@ public class GenerateGlobalHapTSVTable {
 							out.write(globalshc.getHapCountRank().get(hap).get(index) + "\t");	// 
 						}
 					}
-					else {
-						for (int index = 0; index < 5; index++) {
-							if (index != 2) {
-								out.write("0,");	
-							}
-							else {
-								out.write("0\t0\t0\t0");	// add 0 except for ranking		
-							}						
-						}	
+					else {	// haplotype does not exist
+						out.write("0\t0\t0\t0\t");	// add 0 except for ranking		
 					}
 					out.write("\n");
 				}
