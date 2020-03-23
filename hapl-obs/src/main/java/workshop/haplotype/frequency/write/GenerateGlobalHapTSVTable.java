@@ -38,7 +38,15 @@ public class GenerateGlobalHapTSVTable {
 			
 			OrderbyRanking obr = new OrderbyRanking(globalshc);	// generate ranked haplotype list
 			for (String hap : obr.getRankedHapList()) {		// use ordered hap list
-				String [] alleles = hap.split("~");
+				if (hap.contains("~")) {
+					continue;
+				}
+				else {
+					out.write(hap + "\t");
+				}
+				
+				
+/*				String [] alleles = hap.split("~");
 				for (String allele : alleles) {	// need to handle DRB345					
 					if (target.contains("DRB[345]")) {		// target contains DRB345
 						if ((hap.contains("DRB3")) || (hap.contains("DRB4")) ||	(hap.contains("DRB5"))) {	
@@ -56,7 +64,7 @@ public class GenerateGlobalHapTSVTable {
 					else {	// no DRB345 in the target
 						out.write(allele + "\t");
 					}				
-				}								
+				}		*/						
 				out.write("Global\t");
 				
 				// values for global
@@ -76,7 +84,14 @@ public class GenerateGlobalHapTSVTable {
 			
 			for (int count = 0; count < cdl.getDirList().size(); count++) {
 				for (String hap : obr.getRankedHapList()) {		// use ordered hap list
-					String [] alleles = hap.split("~");
+					if (hap.contains("~")) {
+						continue;
+					}
+					else {
+						out.write(hap + "\t");
+					}
+					
+/*					String [] alleles = hap.split("~");
 					for (String allele : alleles) {	// need to handle DRB345					
 						if (target.contains("DRB[345]")) {		// target contains DRB345
 							if ((hap.contains("DRB3")) || (hap.contains("DRB4")) ||	(hap.contains("DRB5"))) {	
@@ -94,7 +109,7 @@ public class GenerateGlobalHapTSVTable {
 						else {	// no DRB345 in the target
 							out.write(allele + "\t");
 						}				
-					}	
+					}	*/	
 					out.write(cdl.getDirList().get(count) + "\t");	// country/ethnicity
 					
 					SampleHapCount groupshc = new SampleHapCount( cdl.getInputFileNameList().get(count), target );
