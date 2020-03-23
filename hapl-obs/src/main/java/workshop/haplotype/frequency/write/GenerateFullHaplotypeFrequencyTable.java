@@ -50,6 +50,9 @@ public class GenerateFullHaplotypeFrequencyTable extends GenerateFamilyHaplotype
 			new GenerateGlobalGroupsHapCountTable(global, 
 					ht.getHapTargetList().get(index), output);
 			
+			new GenerateGlobalHapTSVTable(global, 
+					ht.getHapTargetList().get(index), output);
+			
 			// HLAHapV format
 			new GenerateHapFrequencyTableForHLAHapV(global, ht.getHapTargetList().get(index), 
 					ht.getNameList().get(index), today);
