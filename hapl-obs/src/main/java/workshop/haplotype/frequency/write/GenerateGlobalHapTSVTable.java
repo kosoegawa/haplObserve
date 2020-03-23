@@ -95,14 +95,14 @@ public class GenerateGlobalHapTSVTable {
 							out.write(allele + "\t");
 						}				
 					}	
-					out.write(cdl.getDirList().get(count) + "\t");
+					out.write(cdl.getDirList().get(count) + "\t");	// country/ethnicity
 					
 					SampleHapCount groupshc = new SampleHapCount( cdl.getInputFileNameList().get(count), target );
 					if (groupshc.getHapCountRank().containsKey(hap)) {
 						out.write(String.format("%.6f", groupshc.getFrequency().get(hap)) + "\t");	// frequency
 						out.write(groupshc.getHapCountRank().get(hap).get(0) + "\t");	// hap count
-						for (int index = 2; index < globalshc.getHapCountRank().get(hap).size(); index++) {	// removed ranking
-							out.write(globalshc.getHapCountRank().get(hap).get(index) + "\t");	// 
+						for (int index = 2; index < groupshc.getHapCountRank().get(hap).size(); index++) {	// removed ranking
+							out.write(groupshc.getHapCountRank().get(hap).get(index) + "\t");	// 
 						}
 					}
 					else {	// haplotype does not exist
