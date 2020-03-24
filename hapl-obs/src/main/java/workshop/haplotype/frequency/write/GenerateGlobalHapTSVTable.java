@@ -36,7 +36,7 @@ public class GenerateGlobalHapTSVTable {
 			BufferedWriter out = 
 				new BufferedWriter(new FileWriter(output));	
 			
-			out.write("Allele\tEthnicity/Country\tFreq\tAlleleCount\tFamCount\tSampleCount\n");
+			out.write("Locus\tAllele\tEthnicity/Country\tFreq\tAlleleCount\tFamCount\tSampleCount\n");
 			
 			OrderbyRanking obr = new OrderbyRanking(globalshc);	// generate ranked haplotype list
 			for (String hap : obr.getRankedHapList()) {		// use ordered hap list
@@ -44,7 +44,8 @@ public class GenerateGlobalHapTSVTable {
 					continue;
 				}
 				else {
-					out.write(hap + "\t");
+					String [] type = hap.split("\\*");
+					out.write(type[0] + "\t" + hap + "\t");
 				}
 				
 				
@@ -90,7 +91,8 @@ public class GenerateGlobalHapTSVTable {
 						continue;
 					}
 					else {
-						out.write(hap + "\t");
+						String [] type = hap.split("\\*");
+						out.write(type[0] + "\t" + hap + "\t");
 					}
 					
 /*					String [] alleles = hap.split("~");
