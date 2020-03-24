@@ -36,6 +36,8 @@ public class GenerateGlobalHapTSVTable {
 			BufferedWriter out = 
 				new BufferedWriter(new FileWriter(output));	
 			
+			out.write("Allele\tEthnicity/Country\tFreq\tAlleleCount\tFamCount\tSampleCount\n");
+			
 			OrderbyRanking obr = new OrderbyRanking(globalshc);	// generate ranked haplotype list
 			for (String hap : obr.getRankedHapList()) {		// use ordered hap list
 				if (hap.contains("~")) {

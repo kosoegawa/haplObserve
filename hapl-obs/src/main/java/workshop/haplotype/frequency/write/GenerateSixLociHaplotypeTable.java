@@ -51,6 +51,16 @@ public class GenerateSixLociHaplotypeTable extends GenerateFamilyHaplotype {
 			new GenerateGlobalGroupsHapCountTable(global, 
 					ht.getHapSixTargetList().get(index), output);
 			
+			if (ht.getNameList().get(index).contains("HLA-")) {	// locus
+				output = global + "summary/Global_" + ht.getNameList().get(index) + "_Locus_Summary_" + today + ".tsv";
+			}
+			else {
+				output = global + "summary/Global_" + ht.getNameList().get(index) + "_Haplotype_Summary_" + today + ".tsv";
+			}
+			
+			new GenerateGlobalHapTSVTable(global, 
+					ht.getHapSixTargetList().get(index), output);
+			
 			// HLAHapV format
 			new GenerateHapFrequencyTableForHLAHapV(global, ht.getHapSixTargetList().get(index), 
 					ht.getSixNameList().get(index), today);
